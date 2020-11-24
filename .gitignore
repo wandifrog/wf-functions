@@ -1,2 +1,5 @@
 node_modules
-one-piece
+dist
+
+# parcel bundler
+.cache/
