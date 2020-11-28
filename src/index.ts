@@ -1,8 +1,4 @@
-
-
-const asd = 123
-
-console.log(asd)
+// My function libraries
 
 /**
  * @example <caption>Example usage of this function.</caption>
