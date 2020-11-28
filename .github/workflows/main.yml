@@ -32,22 +32,19 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [ 12 ]
 
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
 
-      - name: Set up Node.js version= ${{ matrix.node-version }}
+      - name: Set up Node.js version ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
         
       - name: clean cache
         run: npm cache clean --force
-      
-      - name: install
-        run: npm ci
 
       - name: npm install
         run: npm install
