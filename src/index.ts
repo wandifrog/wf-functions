@@ -12,8 +12,10 @@ console.log(asd)
  * @returns {string}
  */
 export const capitalizeEveryWord = (sentence) => {
+  const sanitizeSentence = sentence.replace(/^\s+|-|\s+$/g, '')
+  const sanitizeSentence2 = sanitizeSentence.replace(/[ \t]{2,}/g, ' ')
+  const words = sanitizeSentence2.split(' ')
   const capitalizeWords = []
-  const words = sentence.split(' ')
 
   // words.forEach(word => { // Performance issue
   //   const capitalLetters = word.charAt(0).toUpperCase() + word.slice(1)
@@ -37,8 +39,10 @@ export const capitalizeEveryWord = (sentence) => {
 * @returns {string}
 */
 export const sanitizePhoneNumber = (phoneNumber) => {
-  const result = phoneNumber.replace(/[^0-9]/g, '')
-  // const result = phoneNumber.replace(/-|\s|\+/g, '')
+  if (typeof (phoneNumber) !== 'number' && typeof (phoneNumber) !== 'string') return false
+  const phoneNumberString = phoneNumber.toString()
+  const result = phoneNumberString.replace(/[^0-9]/g, '')
+  // const result = phoneNumberString.replace(/-|\s|\+/g, '')
   return result
 }
 
