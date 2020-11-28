@@ -18,6 +18,3 @@ jobs:
 
       - name: Install Node.js dependencies
         run: npm install
-
-      - name: Run linters
-        uses: npm run lint
