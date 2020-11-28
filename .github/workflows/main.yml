@@ -21,21 +21,36 @@
 
 name: Main
 
-on: [push]
+on:
+  push:
+    branches: [ main ]
 
 jobs:
-  eslint:
+  lint:
+    name: Linting
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v1
 
-      - name: Set up Node.js
+      - name: Set up Node.js version= ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: ${{ matrix.node-version }}
+        
+      - name: clean cache
+        run: npm cache clean --force
       
-      - name: Linting
-        uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: src/
+      - name: install
+        run: npm ci
+
+      - name: npm install
+        run: npm install
+      
+      - name: lint
+        run: npm run lint
