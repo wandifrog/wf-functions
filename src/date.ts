@@ -1,13 +1,6 @@
-// const DAYS_ID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
-// const DAYS_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-// const MONTHS_ID = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
-// const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Oktober', 'November', 'December']
-
-// Only pure functions okay
-
 // TODO: JSDocs
 // TODAYYY ??? !!!
-export const todayQuestionMark = (comparisonDate) => {
+export const todayQuestionMark = (comparisonDate: Date) => {
   const date = new Date()
   const xDate = new Date(comparisonDate)
   if (date.getFullYear() !== xDate.getFullYear()) return false
@@ -17,14 +10,14 @@ export const todayQuestionMark = (comparisonDate) => {
 }
 
 // TODO: JSDocs
-export const parseNewDate = (_date = new Date(), format = false, lang = 'id') => {
+export const parseNewDate = (_date: Date, format: string, lang: 'id' | 'en' = 'id') => {
   const DAYS_ID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
   const DAYS_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
   const MONTHS_ID = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
   const MONTHS_EN = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Oktober', 'November', 'December']
   const date = new Date(_date)
 
-  function ulala(str) {
+  function ulala(str: string) {
     if (str === 'day') return eval(`DAYS_${lang.toUpperCase()}[date.getDay()]`)
     if (str === 'date') return date.getDate()
     if (str === 'month') return eval(`MONTHS_${lang.toUpperCase()}[date.getMonth()].slice(0, 3)`)
